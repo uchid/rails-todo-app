@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <%= link_to "ワークスペース", workspaces_path  %>
+  <%= link_to "ユーザー情報", user_path(current_user) %>
+  <%= link_to "ユーザー覧", users_path %>
+  <%= link_to "ログアウト", logout_path, method: :delete,
+    data: {confirm: "ログアウトしますか？"}  %>
+<% else %>
+  <%= link_to "ログイン", login_path  %>
+  <%= link_to "アカウント作成", new_user_path  %>
+<%  end %>
