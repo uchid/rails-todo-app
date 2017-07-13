@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
+    paticipating_states = @project.paticipating_states.build
+    paticipating_states.user_id = current_user.id
      if @project.save
        flash[:success] = "#{@project.name}プロジェクトが作成されました"
        redirect_to new_project_path

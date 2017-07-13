@@ -1,5 +1,5 @@
 class WorkSpacesController < ApplicationController
   def show
-    @projects = Project.all
+    @projects = current_user.projects
   end
 end

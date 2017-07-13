@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705013737) do
+ActiveRecord::Schema.define(version: 20170712050013) do
+
+  create_table "paticipating_states", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_paticipating_states_on_project_id"
+    t.index ["user_id"], name: "index_paticipating_states_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
