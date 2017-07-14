@@ -1,0 +1,25 @@
+<h1> <%= "#{@project.name}プロジェクトの" %>todo一覧</h1>
+
+<%= form_for @project.todos.build do |f| %>
+  <%= f.label :content, "todo" %>：
+  <%= f.text_field :content %>
+  
+  <%= f.label :todo_date, "日付"%>：
+  <%= f.date_select :todo_date %>
+  
+  <%= f.label :todo_time, "時間" %>：
+  <%= f.time_select :todo_time %>
+
+  <%= hidden_field_tag :project_id, @project.id %>
+
+  <%= f.submit "決定" %>
+<% end %>
+<ul>
+  <% @project.todos.each do |todo| %>
+    <li>
+      内容:<%= todo.content %>
+      日付:<%= todo.todo_date %>
+      時間:<%= todo.todo_time.to_a[2] %>:<%= todo.todo_time.to_a[1] %>
+    </li>
+  <% end %>
+</ul>

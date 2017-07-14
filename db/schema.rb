@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712050013) do
+ActiveRecord::Schema.define(version: 20170713110304) do
 
   create_table "paticipating_states", force: :cascade do |t|
     t.integer "user_id"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20170712050013) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["work_space_id"], name: "index_projects_on_work_space_id"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.text "content"
+    t.date "todo_date"
+    t.time "todo_time"
+    t.boolean "done", default: false
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_todos_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|

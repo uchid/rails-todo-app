@@ -1,4 +1,6 @@
 <h1>WorkSpace Pages</h1>
 
 <%= render 'projects/projects' %>
-
+<% if !@project.nil? %>
+  <%= render 'todos/todos' %>
+<% end %>

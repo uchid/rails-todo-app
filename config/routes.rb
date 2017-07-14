@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/workspaces', to: 'work_spaces#show'
 
+  get '/workspaces/:project_id', to: 'work_spaces#show'
+
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   resources :projects
 
   resources :users
+
+  resources :todos, only: [:create, :destroy]
 
 end
 
