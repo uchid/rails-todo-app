@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :todos, only: [:create, :destroy]
+  resources :todos, only: [:create, :edit, :update, :destroy]
 
 end
 

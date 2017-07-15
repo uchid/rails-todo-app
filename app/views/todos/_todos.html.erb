@@ -11,15 +11,20 @@
   <%= f.time_select :todo_time %>
 
   <%= hidden_field_tag :project_id, @project.id %>
-
+  
   <%= f.submit "決定" %>
 <% end %>
 <ul>
   <% @project.todos.each do |todo| %>
+    <% if !todo.id.nil? %>
     <li>
       内容:<%= todo.content %>
       日付:<%= todo.todo_date %>
       時間:<%= todo.todo_time.to_a[2] %>:<%= todo.todo_time.to_a[1] %>
+      <%= link_to "編集", edit_todo_path(todo.id) %>
+      <%= link_to "削除", todo_path(todo.id),
+        method: :delete , data: {confirm: "#{todo.content}を削除しますか？"} %>
     </li>
+    <% end %>
   <% end %>
 </ul>

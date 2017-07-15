@@ -1,0 +1,14 @@
+<h1>todo-edit</h1>
+
+<%= form_for @todo do |f| %>
+  <%= f.label :content, "todo" %>：
+  <%= f.text_field :content %>
+  
+  <%= f.label :todo_date, "日付"%>：
+  <%= f.date_select :todo_date %>
+  
+  <%= f.label :todo_time, "時間" %>：
+  <%= f.time_select :todo_time %>
+
+  <%= f.submit "決定" %>
+<% end %>
