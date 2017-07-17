@@ -1,6 +1,11 @@
-<h1>WorkSpace Pages</h1>
+<h1>WorkSpace</h1>
 
-<%= render 'projects/projects' %>
-<% if !@project.nil? %>
-  <%= render 'todos/todos' %>
-<% end %>
+<div class="container" id="work">
+  <div class="row">
+    <%= render 'projects/projects' %>
+    <% if !@project.nil? %>
+      <span class="col-md-1 col-sm-0" id="border"></span>
+      <%= render 'todos/todos' %>
+    <% end %>
+  </div>
+</div>

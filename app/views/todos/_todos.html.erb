@@ -1,30 +1,32 @@
-<h1> <%= "#{@project.name}プロジェクトの" %>todo一覧</h1>
+<div class="col-md-9 col-sm-12" id="todo">
+  <h1> <%= "#{@project.name} project's" %> todo list</h1>
 
-<%= form_for @project.todos.build do |f| %>
-  <%= f.label :content, "todo" %>：
-  <%= f.text_field :content %>
-  
-  <%= f.label :todo_date, "日付"%>：
-  <%= f.date_select :todo_date %>
-  
-  <%= f.label :todo_time, "時間" %>：
-  <%= f.time_select :todo_time %>
+  <%= form_for @project.todos.build do |f| %>
+    <%= f.label :content, "todo" %>:
+    <%= f.text_field :content %>&nbsp&nbsp
 
-  <%= hidden_field_tag :project_id, @project.id %>
-  
-  <%= f.submit "決定" %>
-<% end %>
-<ul>
-  <% @project.todos.each do |todo| %>
-    <% if !todo.id.nil? %>
-    <li>
-      内容:<%= todo.content %>
-      日付:<%= todo.todo_date %>
-      時間:<%= todo.todo_time.to_a[2] %>:<%= todo.todo_time.to_a[1] %>
-      <%= link_to "編集", edit_todo_path(todo.id) %>
-      <%= link_to "削除", todo_path(todo.id),
-        method: :delete , data: {confirm: "#{todo.content}を削除しますか？"} %>
-    </li>
+    <%= f.label :todo_date, "date"%>:
+    <%= f.date_select :todo_date %>&nbsp&nbsp
+
+    <%= f.label :todo_time, "time" %>:
+    <%= f.time_select :todo_time %>&nbsp&nbsp
+
+    <%= hidden_field_tag :project_id, @project.id %>
+
+    <%= f.submit "submit", class: "btn btn-primary" %>
+  <% end %>
+  <ul>
+    <% @project.todos.each do |todo| %>
+      <% if !todo.id.nil? %>
+        <li>
+          <%= todo.content %> /
+          <%= todo.todo_date %> /
+          <%= todo.todo_time.hour %>時<%= todo.todo_time.min %>分
+          <%= link_to "", edit_todo_path(todo.id), class: "glyphicon glyphicon-pencil" %>
+          <%= link_to "", todo_path(todo.id), class: "glyphicon glyphicon-remove",
+      method: :delete , data: {confirm: "Delete todo:【#{todo.content}】 Are you sure？"} %>
+      </li>
     <% end %>
   <% end %>
-</ul>
+  </ul>
+</div>

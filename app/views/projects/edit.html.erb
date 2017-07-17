@@ -1,11 +1,11 @@
-<h1>プロジェクト編集</h1>
+<h1>edit project</h1>
 
 <%= form_for @project do |f| %>
-  <%= f.label :name, "プロジェクト名" %><br>
+  <%= f.label :name, "project name" %><br>
   <%= f.text_field :name %><br>
   
-  <%= f.label :purpose, "使用目的" %><br>
+  <%= f.label :purpose, "purpose" %><br>
   <%= f.text_field :purpose %><br>
 
-  <%= f.submit "決定" %>
+  <%= f.submit "submit", class: "btn" %>
 <% end %>

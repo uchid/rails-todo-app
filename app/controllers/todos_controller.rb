@@ -6,10 +6,9 @@ class TodosController < ApplicationController
     project = Project.find(params[:project_id])
     @todo = project.todos.build(todo_params)
     if @todo.save
-      flash[:seccess] = "Todo作成成功"
       redirect_to workspaces_path(project_id: project.id)
     else
-      flash[:info] = "Todo作成失敗"
+      flash[:info] = "failed"
       redirect_to workspaces_path
     end
   end
@@ -19,10 +18,10 @@ class TodosController < ApplicationController
 
   def update
     if @todo.update_attributes(todo_params) 
-      flash[:success] = "todo編集完了"
+      flash[:success] = "todo edited"
       redirect_to workspaces_path
     else
-      flash[:info] = "todo編集失敗"
+      flash[:info] = "failed"
       render "edit"
     end
   end

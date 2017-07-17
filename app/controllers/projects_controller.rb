@@ -11,10 +11,10 @@ class ProjectsController < ApplicationController
     paticipating_states = @project.paticipating_states.build
     paticipating_states.user_id = current_user.id
      if @project.save
-       flash[:success] = "#{@project.name}プロジェクトが作成されました"
+       flash[:success] = "#{@project.name}project created"
        redirect_to new_project_path
      else
-       flash[:failure] = "正しくプロジェクトが作成されませんでした"
+       flash[:failure] = "failed"
        render 'new'
      end
   end

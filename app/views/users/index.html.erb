@@ -1,8 +1,8 @@
-<ul>
+<ul id="user_list">
   <% @user.each do |user| %>
   <li>
-    <%= user.name  %>
-    <%= user.email  %>
+    Name：<%= user.name  %>&nbsp&nbsp&nbsp
+    Email： <%= user.email  %>
   </li>
   <% end %>
 </ul>

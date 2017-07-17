@@ -1,19 +1,24 @@
-<h1>アカウント新規作成</h1>
+<div class="row" id="create_user">
+  <div class="col-md-offset-5 ">
+
+<h1>Create new account</h1>
 
 <%= form_for @user do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label :name, "ユーザー名"%><br>
+  <%= f.label :name%><br>
   <%= f.text_field :name %><br>
 
-  <%= f.label :email, "メールアドレス" %><br>
+  <%= f.label :email %><br>
   <%= f.email_field :email %><br>
 
-  <%= f.label :password, "パスワード" %><br>
+  <%= f.label :password %><br>
   <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation, "パスワード確認" %><br>
+  <%= f.label :password_confirmation %><br>
   <%= f.password_field :password_confirmation%><br>
 
-  <%= f.submit "決定"%><br>
+  <%= f.submit "submit", class: "btn" %><br>
 <% end %>
+  </div>
+</div>
