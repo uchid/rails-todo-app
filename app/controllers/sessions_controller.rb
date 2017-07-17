@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to workspaces_path 
     else
-      flash.now[:danger] = "メールアドレスもしくはパスワードが正しくありません"
+      flash.now[:danger] = "Login failed. Either the email or password is invalid."
       render 'new'
     end
   end

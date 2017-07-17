@@ -2,6 +2,8 @@
   <h1> <%= "#{@project.name} project's" %> todo list</h1>
 
   <%= form_for @project.todos.build do |f| %>
+    <%= render 'layouts/error_messages', object: f.object %>
+
     <%= f.label :content, "todo" %>:
     <%= f.text_field :content %>&nbsp&nbsp
 

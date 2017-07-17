@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "アカウント作成完了"
+      flash[:success] = "success"
       log_in @user
       redirect_to workspaces_path
     else
-      flash[:info] = "アカウントの作成が失敗しました"
+      flash[:info] = "failed"
       render "new"
     end
   end
