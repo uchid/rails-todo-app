@@ -1,0 +1,15 @@
+<h2><%= "#{@project.name} project's all todo" %></h2> 
+  <ul>
+    <% @project.todos.each do |todo| %>
+        <li>
+          TODO：<%= todo.content %> /
+          DATE：<%= todo.todo_date %> /
+          TIME：<%= todo.todo_time.hour %>時<%= todo.todo_time.min %>分
+          <%= link_to "", todo_path(todo.id), class: "glyphicon glyphicon-remove",
+            method: :delete , data: {confirm: "Delete todo:【#{todo.content}】 Are you sure？"} %>
+          <p>【Status】：<%= todo.done == false ? "in progress" : "done" %>
+          <%= link_to "change status", todo_path(todo, todo_id: todo.id),
+            class: "btn btn-primary"%></p>
+      </li>
+  <% end %>
+  </ul>

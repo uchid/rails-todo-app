@@ -18,5 +18,9 @@ Rails.application.routes.draw do
 
   resources :todos, only: [:create, :edit, :update, :destroy]
 
+  get '/todos/:todo_id', to: 'todos#toggle'
+
+  get '/todos/all/:project_id', as: :all_todos, to: 'todos#all'
+
 end
 

@@ -1,5 +1,6 @@
 <div class="col-md-9 col-sm-12" id="todo">
   <h1> <%= "#{@project.name} project's" %> todo list</h1>
+  <h3><%= "【project's purpose】#{@project.purpose}"%></h3>
 
   <%= form_for @project.todos.build do |f| %>
     <%= render 'layouts/error_messages', object: f.object %>
@@ -17,17 +18,21 @@
 
     <%= f.submit "submit", class: "btn btn-primary" %>
   <% end %>
+    <%= link_to "all todo", all_todos_path(project_id: @project.id),
+       class: "btn btn-primary"%>
   <ul>
     <% @project.todos.each do |todo| %>
       <% if !todo.id.nil? %>
+        <% if !todo.done %>
         <li>
           <%= todo.content %> /
           <%= todo.todo_date %> /
           <%= todo.todo_time.hour %>時<%= todo.todo_time.min %>分
           <%= link_to "", edit_todo_path(todo.id), class: "glyphicon glyphicon-pencil" %>
           <%= link_to "", todo_path(todo.id), class: "glyphicon glyphicon-remove",
-      method: :delete , data: {confirm: "Delete todo:【#{todo.content}】 Are you sure？"} %>
+            method: :delete , data: {confirm: "Delete todo:【#{todo.content}】 Are you sure？"} %>
       </li>
+    <% end %>
     <% end %>
   <% end %>
   </ul>

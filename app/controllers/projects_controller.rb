@@ -24,10 +24,10 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      flash[:success] = "編集成功"
+      flash[:success] = "edit seccess"
       redirect_to workspaces_path
     else
-      flash[:info] = "編集失敗"
+      flash[:info] = "edit failed"
       render "edit"
     end
   end

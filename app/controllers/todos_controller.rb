@@ -31,6 +31,18 @@ class TodosController < ApplicationController
     redirect_to workspaces_path
   end
 
+  def toggle
+    @todo = Todo.find_by(id: params[:todo_id])
+    @todo.done = !@todo.done
+    @todo.save
+    redirect_to all_todos_path(project_id: @todo.project.id)
+  end
+
+  def all
+    @project = Project.find_by(id: params[:project_id])
+    render 'todos/all_todo'
+  end
+
   private
    def todo_params
      params.require(:todo).permit(:content, :todo_date, :todo_time, :project_id)
